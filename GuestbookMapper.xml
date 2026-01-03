@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.GuestbookMapper">
+    <select id="selectGuestbookAll" resultType="com.example.pojo.Guestbook">
+        select *
+        from `guestbook`;
+    </select>
+    <select id="selectGuestbookById" resultType="com.example.pojo.Guestbook">
+        select *
+        from `guestbook`
+        where guestbook_id=#{guestbook_id};
+    </select>
+    <select id="selectGuestbookByName" resultType="com.example.pojo.Guestbook"
+            parameterType="java.lang.String">
+        select *
+        from `guestbook`
+        where user_name=#{user_name};
+    </select>
+    <insert id="addGuestbook">
+        insert into guestbook(user_name,guestbook_title,guestbook_contents,guestbook_addtime)
+        values(#{user_name},#{guestbook_title},#{guestbook_contents},#{guestbook_addtime});
+    </insert>
+    <update id="updateGuestbook">
+        update guestbook
+        set guestbook_state = 1
+        where guestbook_id = #{guestbook_id};
+    </update>
+    <delete id="deleteGuestbook" parameterType="int">
+        delete
+        from `guestbook`
+        where guestbook_id = #{guestbook_id};
+    </delete>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.AdminMapper">
+    <select id="selectAdminAll" resultType="com.example.pojo.Admin">
+        select *
+        from `admin`;
+    </select>
+    <update id="updateAdmin" parameterType="com.example.pojo.Admin">
+        update `admin`
+        set `admin_name` = #{admin_name},`password` = #{password},`phone`=#{phone}
+        where `admin_id` = #{admin_id};
+    </update>
+    <select id="selectAdminById" resultType="com.example.pojo.Admin" parameterType="int">
+        select *
+        from `admin`
+        where `admin_id` = #{admin_id};
+    </select>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.ScenicMapper">
+
+    <select id="selectScenicAll" resultType="com.example.pojo.Scenic">
+        select *
+        from scenic
+    </select>
+    <select id="selectScenicById" resultType="com.example.pojo.Scenic">
+        select *
+        from scenic
+        where scenic_id=#{scenic_id}
+    </select>
+    <select id="selectScenicByTitle" resultType="com.example.pojo.Scenic">
+        select *
+        from scenic
+        where scenic_contact like CONCAT('%',#{scenic_contact},'%')
+    </select>
+    <select id="selectScenicByName" resultType="com.example.pojo.Scenic">
+        select *
+        from scenic
+        where scenic_name like CONCAT('%',#{scenic_name},'%')
+    </select>
+    <insert id="addScenic" parameterType="com.example.pojo.Scenic">
+        insert into scenic(scenic_name,scenic_price,scenic_contact,scenic_address,scenic_photo,scenic_introduction,scenic_addtime)
+        values(#{scenic_name},#{scenic_price},#{scenic_contact},#{scenic_address},#{scenic_photo},#{scenic_introduction},#{scenic_addtime})
+    </insert>
+    <update id="updateScenic" parameterType="com.example.pojo.Scenic">
+        update scenic
+        set scenic_name=#{scenic_name},scenic_price=#{scenic_price},scenic_contact=#{scenic_contact},scenic_address=#{scenic_address},scenic_photo=#{scenic_photo},scenic_introduction=#{scenic_introduction},scenic_addtime=#{scenic_addtime}
+        where scenic_id=#{scenic_id}
+    </update>
+    <delete id="deleteScenicById">
+        delete from scenic
+        where scenic_id=#{scenic_id}
+    </delete>
+
+</mapper>

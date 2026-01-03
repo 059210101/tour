@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--配置数据源，交给Spring去做-->
+    <typeAliases>
+        <package name="com.example.pojo"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper class="com.example.dao.UserMapper"/>
+        <mapper class="com.example.dao.AdminMapper"/>
+        <mapper class="com.example.dao.JudgeMapper"/>
+        <mapper class="com.example.dao.GuestbookMapper"/>
+        <mapper class="com.example.dao.NoticeMapper"/>
+        <mapper class="com.example.dao.EssayMapper"/>
+        <mapper class="com.example.dao.ScenicMapper"/>
+        <mapper class="com.example.dao.CommentsMapper"/>
+    </mappers>
+</configuration>

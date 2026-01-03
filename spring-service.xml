@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--1.扫描service下的包-->
+    <context:component-scan base-package="com.example.service"/>
+
+    <!--2.将我们的所有业务类，注入到Spring，可以通过配置，或者注解实现-->
+    <bean id="UserServiceImpl" class="com.example.service.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+    <bean id="AdminServiceImpl" class="com.example.service.AdminServiceImpl">
+        <property name="adminMapper" ref="adminMapper"/>
+    </bean>
+    <bean id="JudgeServiceImpl" class="com.example.service.JudgeServiceImpl">
+        <property name="judgeMapper" ref="judgeMapper"/>
+    </bean>
+    <bean id="GuestbookServiceImpl" class="com.example.service.GuestbookServiceImpl">
+        <property name="guestbookMapper" ref="guestbookMapper"/>
+    </bean>
+    <bean id="NoticeServiceImpl" class="com.example.service.NoticeServiceImpl">
+        <property name="noticeMapper" ref="noticeMapper"/>
+    </bean>
+    <bean id="EssayServiceImpl" class="com.example.service.EssayServiceImpl">
+        <property name="essenceMapper" ref="essayMapper"/>
+    </bean>
+    <bean id="ScenicServiceImpl" class="com.example.service.ScenicServiceImpl">
+        <property name="scenicMapper" ref="scenicMapper"/>
+    </bean>
+    <bean id="CommentsServiceImpl" class="com.example.service.CommentsServiceImpl">
+        <property name="commentsMapper" ref="commentsMapper"/>
+    </bean>
+
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>

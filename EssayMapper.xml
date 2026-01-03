@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.EssayMapper">
+
+    <select id="selectEssayAll" resultType="com.example.pojo.Essay">
+        select *
+        from essay
+        order by `essay_id`
+        desc;
+    </select>
+    <select id="selectEssayById" resultType="com.example.pojo.Essay">
+        select *
+        from essay
+        where essay_id=#{essay_id}
+    </select>
+    <select id="selectEssayByTitle" resultType="com.example.pojo.Essay">
+        select *
+        from essay
+        where essay_title like CONCAT('%',#{essay_title},'%')
+        order by `essay_id`
+        desc;
+    </select>
+    <select id="selectEssayByUserName" resultType="com.example.pojo.Essay">
+        select *
+        from essay
+        where user_name=#{user_name}
+        order by `essay_id`
+        desc;
+    </select>
+    <select id="selectEssayByUserNameAndTitle" resultType="com.example.pojo.Essay">
+        SELECT *
+        FROM essay
+        WHERE user_name = #{user_name}
+          AND essay_title like CONCAT('%', #{essay_title}, '%')
+        order by `essay_id`
+        desc;
+    </select>
+
+    <insert id="addEssay">
+        insert into essay(user_name,essay_photo,essay_title,essay_contents,essay_addtime)
+        values(#{user_name},#{essay_photo},#{essay_title},#{essay_contents},#{essay_addtime})
+    </insert>
+    <update id="updateEssay">
+        update essay
+        set essay_photo=#{essay_photo},essay_title=#{essay_title},essay_contents=#{essay_contents},essay_addtime=#{essay_addtime}
+        where essay_id=#{essay_id}
+    </update>
+
+    <delete id="deleteEssayById">
+        delete from essay
+        where essay_id=#{essay_id}
+    </delete>
+
+</mapper>
